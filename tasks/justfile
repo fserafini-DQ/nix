@@ -1,14 +1,15 @@
+[no-cd]
 node:
-    nix-shell -p nodejs -p corepack
-    
+    nix-shell --run zsh -p nodejs -p corepack
+[no-cd]    
 php:
-    nix-shell -p php
-
+    nix-shell --run zsh  -p php
+[no-cd]
 python:
-    nix-shell -p python3
-
+    nix-shell --run zsh  -p python3
+[no-cd]
 rust:
-    nix-shell -p rustc
-
+    nix-shell --run zsh  -p rustc
+[no-cd]
 go:
-    nix-shell -p go
+    nix-shell --run zsh  -p go
