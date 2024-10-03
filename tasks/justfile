@@ -1,0 +1,14 @@
+node:
+    nix-shell -p nodejs -p corepack
+    
+php:
+    nix-shell -p php
+
+python:
+    nix-shell -p python3
+
+rust:
+    nix-shell -p rustc
+
+go:
+    nix-shell -p go

@@ -1,8 +1,8 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   nix-homebrew = {
     enable = true;
     # enableRosetta = true; # TODO: install rosetta
-    user = "Brasolin";
+    user = "mrbash";
     # We use a fully declarative setup of Homebrew.
     mutableTaps = false;
     taps = {

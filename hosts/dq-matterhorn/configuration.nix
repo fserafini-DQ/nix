@@ -1,7 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -13,6 +12,8 @@
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+
+  nixpkgs.config.allowUnfree = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
@@ -27,8 +28,8 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  networking.hostName = "ebisu";
-  networking.localHostName = "ebisu";
+  networking.hostName = "dq-matterhorn";
+  networking.localHostName = "dq-matterhorn";
 
   system.defaults.NSGlobalDomain = {
     InitialKeyRepeat = 15; # 25;
@@ -60,20 +61,20 @@
     autohide-time-modifier = 0.1;
     static-only = true;
     showhidden = true;
-    tilesize = 32;
+    tilesize = 60;
     show-recents = false;
   };
 
   system.startup.chime = false;
 
   environment.shellAliases = {
-    snix = "darwin-rebuild switch --flake ~/pb/nix/flake.nix#ebisu";
+    snix = "darwin-rebuild switch --flake ~/Workspace/nix/flake.nix#dq-matterhorn";
   };
 
-  fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["Hack"];})];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Hack" ]; }) ];
 
-  users.users."Brasolin".home = /Users/Brasolin;
-  users.users."Brasolin" = {
+  users.users."mrbash".home = "/Users/mrbash";
+  users.users."mrbash" = {
     shell = pkgs.zsh;
   };
 
