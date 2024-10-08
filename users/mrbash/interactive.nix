@@ -70,6 +70,10 @@
     '';
   };
 
+  programs.fish = {
+    enable = true;
+  };
+
   programs.starship = {
     enable = true;
     settings = {
@@ -79,28 +83,6 @@
       status.disabled = false;
       sudo.disabled = false;
       docker_context.only_with_files = false;
-      custom.hcloud_context = {
-        command = "hcloud context active";
-        when = true; # "command -v hcloud";
-        style = "bold red";
-        symbol = " ";
-      };
-      custom.timewarrior = {
-        command =
-          let
-            jq_script = ''
-              .tags |= sort_by(length) |
-              {
-                tags: .tags | join("/"),
-                duration: (now - (.start | strptime("%Y%m%dT%H%M%SZ") | mktime)) | strftime("%H:%M")
-              } |
-              "\(.tags) \(.duration)"
-            '';
-          in
-          "timew get dom.active.json | jq -r '${jq_script}'";
-        when = "timew";
-        symbol = " ";
-      };
     };
   };
 

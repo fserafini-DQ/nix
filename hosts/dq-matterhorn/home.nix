@@ -21,12 +21,13 @@
     kubectl
     k9s
     kustomize
+    ansible
   ];
 
   programs.ssh = {
     enable = true;
     includes = [
-      "~/.colima/ssh_config" # NOTE: colima isn't being particularly smart about it.
+      "~/.ssh/config_pve" # NOTE: colima isn't being particularly smart about it.
     ];
   };
 }

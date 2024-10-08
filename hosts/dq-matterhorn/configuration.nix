@@ -17,7 +17,7 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
@@ -75,7 +75,8 @@
 
   users.users."mrbash".home = "/Users/mrbash";
   users.users."mrbash" = {
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   environment.variables = {
